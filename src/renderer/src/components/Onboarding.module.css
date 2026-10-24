@@ -1,0 +1,36 @@
+.sheet {
+  width: min(480px, calc(100vw - var(--space-6)));
+}
+
+.points {
+  margin: var(--space-3) 0;
+  padding-left: var(--space-4);
+  font-size: var(--text-s);
+  line-height: 1.5;
+}
+
+.heading {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: var(--text-s);
+  font-weight: 600;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.choice {
+  height: 32px;
+  border: var(--hairline) solid var(--separator-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-size: var(--text-s);
+}
+
+.choice[data-state='checked'] {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}

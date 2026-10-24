@@ -1,0 +1,84 @@
+.edit {
+  display: grid;
+  grid-template-columns: minmax(180px, var(--left)) 1fr minmax(220px, var(--right));
+  grid-template-rows: minmax(200px, var(--top)) 1fr;
+  grid-template-areas:
+    'media viewer inspector'
+    'timeline timeline timeline';
+  gap: var(--hairline);
+  position: relative;
+  height: 100%;
+  background: var(--separator);
+  animation: enter var(--dur-med) var(--ease-spring);
+}
+
+.unbuilt {
+  height: 100%;
+  background: var(--surface-panel);
+  animation: enter var(--dur-med) var(--ease-spring);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.color {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, var(--right));
+  grid-template-rows: minmax(220px, var(--top)) auto minmax(0, 1fr);
+  grid-template-areas:
+    'viewer scopes'
+    'strip strip'
+    'grade grade';
+  gap: var(--hairline);
+  position: relative;
+  height: 100%;
+  background: var(--separator);
+  animation: enter var(--dur-med) var(--ease-spring);
+}
+
+.audio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, var(--right));
+  grid-template-rows: minmax(160px, var(--top)) minmax(260px, 36%) minmax(0, 1fr);
+  grid-template-areas:
+    'viewer inspector'
+    'mixer mixer'
+    'timeline timeline';
+  gap: var(--hairline);
+  position: relative;
+  height: 100%;
+  background: var(--separator);
+  animation: enter var(--dur-med) var(--ease-spring);
+}
+
+.captions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, var(--right));
+  grid-template-rows: minmax(220px, var(--top)) minmax(0, 1fr);
+  grid-template-areas:
+    'viewer captions'
+    'timeline captions';
+  gap: var(--hairline);
+  position: relative;
+  height: 100%;
+  background: var(--separator);
+  animation: enter var(--dur-med) var(--ease-spring);
+}
+
+.export {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, var(--right));
+  grid-template-rows: minmax(220px, var(--top)) minmax(0, 1fr);
+  grid-template-areas:
+    'viewer settings'
+    'queue settings';
+  gap: var(--hairline);
+  position: relative;
+  height: 100%;
+  background: var(--separator);
+  animation: enter var(--dur-med) var(--ease-spring);
+}

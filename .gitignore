@@ -1,0 +1,13 @@
+README.local.md
+node_modules/
+out/
+dist/
+release/
+resources/bin/
+models/
+*.log
+.eslintcache
+coverage/
+test-results/
+playwright-report/
+tests/render/__output__/

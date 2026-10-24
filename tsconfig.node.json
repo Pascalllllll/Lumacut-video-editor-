@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": [
+    "src/main/**/*",
+    "src/preload/**/*",
+    "src/shared/**/*",
+    "src/engine/**/*",
+    "src/media/**/*",
+    "src/audio/**/*",
+    "src/ai/**/*",
+    "scripts/**/*.ts",
+    "electron.vite.config.ts",
+    "vitest.config.ts",
+    "playwright.render.config.ts",
+    "playwright.config.ts"
+  ]
+}

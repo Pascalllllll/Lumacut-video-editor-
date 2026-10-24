@@ -1,0 +1,35 @@
+.field,
+.input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  width: 72px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: var(--radius-s);
+  font-size: var(--text-s);
+  font-family: var(--font-ui);
+}
+
+.field {
+  background: var(--surface-inset);
+  color: var(--accent-text);
+  cursor: ew-resize;
+}
+
+.field:hover {
+  background: var(--surface-active);
+}
+
+.input {
+  border: var(--hairline) solid var(--accent);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  text-align: right;
+  user-select: text;
+}
+
+.unit {
+  color: var(--text-tertiary);
+}

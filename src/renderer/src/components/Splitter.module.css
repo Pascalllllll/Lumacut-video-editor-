@@ -1,0 +1,40 @@
+/* Handles sit on the hairline between panels; the grid sizes come from the same variables. */
+.splitter {
+  position: absolute;
+  z-index: 5;
+  touch-action: none;
+}
+
+.splitter[data-handle='left'] {
+  top: 0;
+  bottom: calc(100% - var(--top));
+  left: calc(var(--left) - 3px);
+  width: 6px;
+  cursor: col-resize;
+}
+
+.splitter[data-handle='right'] {
+  top: 0;
+  bottom: 0;
+  right: calc(var(--right) - 3px);
+  width: 6px;
+  cursor: col-resize;
+}
+
+.splitter[data-handle='right'][data-span='top'] {
+  bottom: calc(100% - var(--top));
+}
+
+.splitter[data-handle='top'] {
+  left: 0;
+  right: 0;
+  top: calc(var(--top) - 3px);
+  height: 6px;
+  cursor: row-resize;
+}
+
+.splitter:hover,
+.splitter:focus-visible {
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  outline: none;
+}

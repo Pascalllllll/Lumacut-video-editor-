@@ -1,0 +1,62 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  outline: none;
+}
+
+.overlay[data-drawing='true'] {
+  pointer-events: all;
+  cursor: crosshair;
+}
+
+.body {
+  fill: transparent;
+  stroke: var(--accent);
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+  cursor: move;
+}
+
+.stem {
+  stroke: var(--accent);
+  vector-effect: non-scaling-stroke;
+}
+
+.handle,
+.rotate {
+  fill: #ffffff;
+  stroke: var(--accent);
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+}
+
+.handle {
+  cursor: nwse-resize;
+}
+
+.rotate {
+  cursor: grab;
+}
+
+/* Masks use a contrasting dashed line so they don't read as the clip's frame. */
+.mask {
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-dasharray: 6 4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: stroke;
+  cursor: move;
+  filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.8));
+}
+
+.maskPoint {
+  fill: #ffffff;
+  stroke: #000000;
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+  cursor: crosshair;
+}

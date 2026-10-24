@@ -1,0 +1,32 @@
+import { test } from './fixtures'
+import { addToEnd, box, haveFfmpeg, importFiles, makeMedia, track } from './helpers'
+
+test.skip(!haveFfmpeg, 'FFmpeg not fetched')
+
+test('screenshot: look tab, picture handles, title and transition', async ({ app, page }) => {
+  const media = makeMedia()
+  await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0]?.setSize(1440, 900))
+  await page.getByRole('button', { name: 'Settings' }).click()
+  await page.getByRole('radio', { name: 'Dark' }).click()
+  await page.keyboard.press('Escape')
+  await importFiles(app, page, [media.a, media.b])
+  await addToEnd(page, 'alpha.mp4')
+  await addToEnd(page, 'bravo.mp4')
+  await page.keyboard.press('Shift+Z')
+  for (let i = 0; i < 4; i++) await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('Control+d')
+  await page.keyboard.press('Home')
+  await page.getByRole('tab', { name: 'Titles' }).click()
+  await page.getByRole('listitem', { name: 'Lower third', exact: true }).dblclick()
+  await page.keyboard.press('ArrowRight')
+  await page.keyboard.press('ArrowRight')
+  const a = await box(track(page, 'V1').nth(0))
+  await page.mouse.click(a.x + a.width / 3, a.y + a.height / 2)
+  await page.getByRole('tab', { name: 'Effects' }).click()
+  await page.getByRole('listitem', { name: 'Vignette', exact: true }).dblclick()
+  const inspector = page.getByRole('region', { name: 'Inspector' })
+  await inspector.getByRole('tab', { name: 'Look' }).click()
+  await inspector.getByRole('button', { name: 'Animate Width' }).click()
+  await page.waitForTimeout(600)
+  await page.screenshot({ path: 'test-results/screens/p3-dark.png' })
+})

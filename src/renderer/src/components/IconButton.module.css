@@ -1,0 +1,45 @@
+.button {
+  display: inline-grid;
+  place-items: center;
+  width: var(--control-h);
+  height: var(--control-h);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-m);
+  background: transparent;
+  color: var(--text-secondary);
+  transition:
+    background-color var(--dur-fast) ease-out,
+    color var(--dur-fast) ease-out;
+}
+
+.button:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.button:active {
+  background: var(--surface-active);
+}
+
+.window,
+.window-close {
+  width: 46px;
+  height: var(--titlebar-h);
+  border-radius: 0;
+}
+
+.window-close:hover {
+  background: var(--close-hover);
+  color: #ffffff;
+}
+
+.tooltip {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-s);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-size: var(--text-s);
+  box-shadow: var(--shadow-sheet);
+  z-index: 100;
+}

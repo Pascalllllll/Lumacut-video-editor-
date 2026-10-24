@@ -1,0 +1,285 @@
+.headerButtons {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.headerButton {
+  width: 24px;
+  height: 24px;
+}
+
+.searchRow {
+  padding: var(--space-2) var(--space-3) 0;
+}
+
+.search {
+  width: 100%;
+  height: 26px;
+  padding: 0 var(--space-2);
+  border: var(--hairline) solid var(--separator-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-inset);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--text-s);
+  user-select: text;
+}
+
+.search::placeholder {
+  color: var(--text-tertiary);
+}
+
+.drop {
+  min-height: 100%;
+  transition: background-color var(--dur-fast) ease-out;
+}
+
+.drop[data-dropping='true'] {
+  background: var(--surface-hover);
+  outline: 2px dashed var(--accent);
+  outline-offset: -6px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: var(--space-3) var(--space-2);
+  margin: 0;
+  padding: var(--space-3);
+  list-style: none;
+}
+
+.card {
+  min-width: 0;
+  border-radius: var(--radius-m);
+  outline-offset: 2px;
+}
+
+.thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  background: var(--surface-inset);
+  color: var(--text-tertiary);
+  box-shadow: inset 0 0 0 1px var(--separator);
+}
+
+.thumb[data-kind='sequence'] {
+  background: color-mix(in srgb, var(--clip-title) 30%, var(--surface-inset));
+  color: var(--text-secondary);
+}
+
+.thumb[data-kind='audio'] {
+  background: color-mix(in srgb, var(--clip-audio) 28%, var(--surface-inset));
+  color: var(--text-secondary);
+}
+
+.thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card[data-selected='true'] .thumb {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.badge {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: rgb(0 0 0 / 0.65);
+  color: #ffffff;
+  font-size: var(--text-xs);
+  line-height: 16px;
+}
+
+.badgeLeft {
+  right: auto;
+  left: 4px;
+}
+
+.open {
+  color: var(--text-tertiary);
+}
+
+.rename {
+  width: 100%;
+  height: 20px;
+  padding: 0 4px;
+  border: var(--hairline) solid var(--accent);
+  border-radius: 3px;
+  background: var(--surface-inset);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--text-s);
+  user-select: text;
+}
+
+.meta {
+  padding: var(--space-1) 2px 0;
+}
+
+.name {
+  display: block;
+  overflow: hidden;
+  font-size: var(--text-s);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.skeleton .thumb {
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+.skeleton .name {
+  color: var(--text-secondary);
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0.5;
+  }
+}
+
+.noMatch {
+  grid-column: 1 / -1;
+  color: var(--text-secondary);
+  font-size: var(--text-s);
+}
+
+.importButton {
+  height: var(--control-h);
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-m);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.importButton:hover {
+  filter: brightness(1.08);
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  min-width: 0;
+  padding: 2px;
+  border-radius: var(--radius-m);
+  background: var(--surface-inset);
+  overflow-x: auto;
+}
+
+.tab {
+  height: 22px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-s);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+}
+
+.tab[aria-selected='true'] {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+.headerButtons[hidden],
+.searchRow[hidden] {
+  display: none;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.filter {
+  height: 22px;
+  padding: 0 var(--space-2);
+  border: var(--hairline) solid var(--separator-strong);
+  border-radius: var(--radius-s);
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.filter[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.badgeMissing {
+  background: var(--meter-over);
+  color: #fff;
+}
+
+.card[data-missing='true'] .thumb {
+  opacity: 0.45;
+}
+
+.stars {
+  color: var(--accent-text);
+  font-size: var(--text-xs);
+  letter-spacing: 1px;
+}
+
+.tags {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* List view: one row per item, a small thumbnail at the start. */
+.grid[data-view='list'] {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.grid[data-view='list'] .card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.grid[data-view='list'] .thumb {
+  width: 56px;
+  height: 32px;
+  aspect-ratio: auto;
+}
+
+.grid[data-view='list'] .badge {
+  display: none;
+}
+
+/* A missing file stays visible in the list too. */
+.grid[data-view='list'] .badgeMissing {
+  display: block;
+  position: static;
+  margin: 0;
+  font-size: 9px;
+}

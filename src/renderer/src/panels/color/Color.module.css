@@ -1,0 +1,93 @@
+.segmented {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-m);
+  background: var(--surface-inset);
+  overflow-x: auto;
+}
+
+.segment {
+  height: 22px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-s);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.segment:hover {
+  color: var(--text-primary);
+}
+
+.segment[aria-selected='true'] {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+.scopeStage {
+  position: absolute;
+  inset: var(--space-3);
+  display: grid;
+  place-items: center;
+  container-type: size;
+}
+
+.scopeBox {
+  position: relative;
+  width: min(100cqw, 100cqh * 1.5);
+  height: min(100cqh, 100cqw / 1.5);
+}
+
+.scopeBox[data-kind='vectorscope'] {
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+}
+
+.scopeCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b0c0e;
+  image-rendering: auto;
+}
+
+.graticule {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.grid {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.14);
+  stroke-width: 0.3;
+  vector-effect: non-scaling-stroke;
+}
+
+.skin {
+  stroke: rgb(255 200 150 / 0.4);
+  stroke-width: 0.5;
+  stroke-dasharray: 2 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.target {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.45);
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.label {
+  fill: rgb(255 255 255 / 0.55);
+  font-size: 3.4px;
+  font-family: var(--font-ui);
+}

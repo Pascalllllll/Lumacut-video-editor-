@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM"],
+    "types": ["node"]
+  },
+  "include": [
+    "tests/**/*",
+    "src/preload/api.d.ts",
+    "src/shared/**/*",
+    "src/engine/**/*",
+    "src/renderer/src/i18n/*.json"
+  ]
+}

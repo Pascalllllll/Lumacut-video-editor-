@@ -1,0 +1,73 @@
+.library {
+  padding: var(--space-2) var(--space-3) var(--space-4);
+}
+
+.search {
+  width: 100%;
+  height: 26px;
+  padding: 0 var(--space-2);
+  border: var(--hairline) solid var(--separator-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-inset);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--text-s);
+  user-select: text;
+}
+
+.search::placeholder {
+  color: var(--text-tertiary);
+}
+
+.hint {
+  margin: var(--space-2) 0;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.group {
+  margin: var(--space-3) 0 var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.list {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 28px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-s);
+  font-size: var(--text-s);
+  cursor: grab;
+}
+
+.item:hover {
+  background: var(--surface-hover);
+}
+
+/* A small shape that tells effects, transitions and generators apart at a glance. */
+.swatch {
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--clip-video);
+  flex-shrink: 0;
+}
+
+.swatch[data-kind='transitions'] {
+  background: linear-gradient(90deg, var(--clip-video) 50%, var(--clip-image) 50%);
+}
+
+.swatch[data-kind='generators'] {
+  background: var(--clip-title);
+}

@@ -1,0 +1,33 @@
+.app {
+  display: grid;
+  grid-template-rows: var(--titlebar-h) 1fr;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease-out;
+}
+
+.app[data-loaded='true'] {
+  opacity: 1;
+}
+
+.content {
+  min-height: 0;
+  min-width: 0;
+}
+
+.banner {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-4);
+  transform: translateX(-50%);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-raised);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-sheet);
+  font-size: var(--text-s);
+}
+
+/* The workspace tab set wraps the title bar and content without adding a box. */
+.tabs {
+  display: contents;
+}

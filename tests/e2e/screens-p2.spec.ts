@@ -1,0 +1,37 @@
+import { test } from './fixtures'
+import { addToEnd, box, haveFfmpeg, importFiles, makeMedia, track } from './helpers'
+
+test.skip(!haveFfmpeg, 'FFmpeg not fetched')
+
+test('screenshot: multi-track edit with markers and speed', async ({ app, page }) => {
+  const media = makeMedia()
+  await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0]?.setSize(1440, 900))
+  await page.getByRole('button', { name: 'Settings' }).click()
+  await page.getByRole('radio', { name: 'Dark' }).click()
+  await page.keyboard.press('Escape')
+  await importFiles(app, page, [media.a, media.b, media.camA])
+  await addToEnd(page, 'alpha.mp4')
+  await addToEnd(page, 'bravo.mp4')
+  await page.getByRole('button', { name: 'Add video track' }).click()
+  await page
+    .getByRole('listitem', { name: 'cam-a.mp4', exact: true })
+    .dragTo(page.getByRole('list', { name: 'Track V2' }), { targetPosition: { x: 200, y: 20 } })
+  await page.keyboard.press('Shift+Z')
+  await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('m')
+  await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('i')
+  await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('Shift+ArrowRight')
+  await page.keyboard.press('o')
+  const b = await box(track(page, 'V1').nth(1))
+  await page.mouse.click(b.x + b.width / 2, b.y + b.height / 2)
+  const speed = page.getByRole('spinbutton', { name: 'Speed (%)' })
+  await speed.fill('150')
+  await speed.press('Enter')
+  await page.getByRole('checkbox', { name: 'Speed ramp' }).check()
+  await page.getByRole('button', { name: 'Slow in the middle' }).click()
+  await page.waitForTimeout(500)
+  await page.screenshot({ path: 'test-results/screens/p2-dark.png' })
+})

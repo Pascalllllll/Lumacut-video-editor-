@@ -1,0 +1,151 @@
+/*
+ * Design tokens. Dark is graphite, light is soft grey; one accent at a time.
+ * Text colors are picked to hold 4.5:1 on --surface-panel in both themes.
+ */
+:root {
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter Variable', 'Inter',
+    'Segoe UI Variable', 'Cantarell', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'DejaVu Sans Mono', monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 10px;
+
+  --text-xs: 11px;
+  --text-s: 12px;
+  --text-m: 13px;
+  --text-l: 15px;
+  --text-xl: 20px;
+
+  --control-h: 28px;
+  --titlebar-h: 40px;
+
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 150ms;
+  --dur-med: 240ms;
+
+  --hairline: 1px;
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface-app: #141518;
+  --surface-panel: #1c1d21;
+  --surface-raised: #26272c;
+  --surface-inset: #101114;
+  --surface-hover: rgb(255 255 255 / 0.06);
+  --surface-active: rgb(255 255 255 / 0.1);
+  --separator: rgb(255 255 255 / 0.08);
+  --separator-strong: rgb(255 255 255 / 0.14);
+  --text-primary: #ececef;
+  --text-secondary: #a8a9b0;
+  --text-tertiary: #8b8c94;
+  --overlay: rgb(0 0 0 / 0.5);
+  --shadow-sheet: 0 24px 64px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(255 255 255 / 0.08);
+  --close-hover: #c42b1c;
+
+  --clip-video: #4a76b8;
+  --clip-audio: #3a8f6e;
+  --clip-image: #a8743f;
+  --clip-title: #7f62b8;
+  /* Drawn over clip colors, so the same in both themes. */
+  --level-line: #ffd98a;
+
+  --meter-bed: #0c0d0f;
+  --meter-ok: #3fbf7f;
+  --meter-hot: #e5c03a;
+  --meter-over: #e5554f;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --surface-app: #e7e7ea;
+  --surface-panel: #f5f5f6;
+  --surface-raised: #ffffff;
+  --surface-inset: #dcdce0;
+  --surface-hover: rgb(0 0 0 / 0.05);
+  --surface-active: rgb(0 0 0 / 0.09);
+  --separator: rgb(0 0 0 / 0.1);
+  --separator-strong: rgb(0 0 0 / 0.16);
+  --text-primary: #1b1b1e;
+  --text-secondary: #52535a;
+  --text-tertiary: #5a5b62;
+  --overlay: rgb(0 0 0 / 0.25);
+  --shadow-sheet: 0 24px 64px rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.08);
+  --close-hover: #c42b1c;
+}
+
+/* --accent fills controls; --accent-text is the same hue tuned to read as text on panels. */
+:root[data-accent='amber'] {
+  --accent: #e5a23a;
+  --accent-text: #e9ac4f;
+  --on-accent: #1d1303;
+}
+:root[data-accent='blue'] {
+  --accent: #4d8dfa;
+  --accent-text: #78a8fb;
+  --on-accent: #ffffff;
+}
+:root[data-accent='green'] {
+  --accent: #3aa874;
+  --accent-text: #52bf8a;
+  --on-accent: #ffffff;
+}
+:root[data-accent='red'] {
+  --accent: #e5554f;
+  --accent-text: #f07a74;
+  --on-accent: #ffffff;
+}
+:root[data-accent='violet'] {
+  --accent: #8f6ff0;
+  --accent-text: #ad95f5;
+  --on-accent: #ffffff;
+}
+:root[data-accent='graphite'] {
+  --accent: #9c9ea6;
+  --accent-text: #b4b6bd;
+  --on-accent: #141518;
+}
+
+:root[data-theme='light'][data-accent='amber'] {
+  --accent: #c98112;
+  --accent-text: #7a4a00;
+  --on-accent: #1d1303;
+}
+:root[data-theme='light'][data-accent='blue'] {
+  --accent: #2468dc;
+  --accent-text: #1d58bd;
+}
+:root[data-theme='light'][data-accent='green'] {
+  --accent: #1f8a58;
+  --accent-text: #176b44;
+}
+:root[data-theme='light'][data-accent='red'] {
+  --accent: #cc3a33;
+  --accent-text: #ad2a24;
+}
+:root[data-theme='light'][data-accent='violet'] {
+  --accent: #6c49d6;
+  --accent-text: #5a37c4;
+}
+:root[data-theme='light'][data-accent='graphite'] {
+  --accent: #4b4d54;
+  --accent-text: #3f4147;
+  --on-accent: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+  }
+}

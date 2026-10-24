@@ -1,0 +1,63 @@
+.stack {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(380px, calc(100vw - var(--space-6)));
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+  border-radius: var(--radius-m);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sheet);
+  font-size: var(--text-s);
+  animation: in var(--dur-med) var(--ease-spring);
+}
+
+.notice span {
+  flex: 1;
+  padding-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+/* Errors carry a marker so the kind isn't told by color alone. */
+.notice[data-kind='error'] span::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: var(--space-2);
+  border-radius: 50%;
+  background: #e5554f;
+  vertical-align: 1px;
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.close:hover {
+  background: var(--surface-hover);
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}

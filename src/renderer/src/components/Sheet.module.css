@@ -1,0 +1,137 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--overlay);
+  animation: fade var(--dur-fast) ease-out;
+}
+
+.sheet {
+  position: fixed;
+  top: 18vh;
+  left: 50%;
+  z-index: 51;
+  width: min(440px, calc(100vw - var(--space-6)));
+  transform: translateX(-50%);
+  padding: var(--space-5);
+  border-radius: var(--radius-l);
+  background: var(--surface-panel);
+  box-shadow: var(--shadow-sheet);
+  animation: rise var(--dur-med) var(--ease-spring);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.98);
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-l);
+  font-weight: 600;
+}
+
+.body {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--text-m);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.button {
+  height: var(--control-h);
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--separator-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.button:hover {
+  background: color-mix(in srgb, var(--surface-raised) 85%, var(--text-primary));
+}
+
+.primary {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.primary:hover {
+  background: var(--accent);
+  filter: brightness(1.08);
+}
+
+.spacer {
+  margin-right: auto;
+}
+
+.progress {
+  height: 6px;
+  margin-top: var(--space-4);
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--surface-inset);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 200ms linear;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-s);
+}
+
+.list {
+  display: grid;
+  gap: 2px;
+  max-height: 40vh;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: var(--hairline) solid var(--separator);
+  font-size: var(--text-s);
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+.listSkeleton {
+  height: 80px;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-s);
+  background: var(--surface-inset);
+}
