@@ -13,6 +13,8 @@ const ffmpeg = join(
 )
 
 describe.skipIf(!existsSync(ffmpeg))('color chains run in FFmpeg', () => {
+  // Vitest still runs a skipped suite's body to collect its tests; the setup below needs FFmpeg.
+  if (!existsSync(ffmpeg)) return
   const dir = mkdtempSync(join(tmpdir(), 'lumacut-color-'))
   const sdr = join(dir, 'sdr.mp4')
   const hdr = join(dir, 'hdr.mp4')

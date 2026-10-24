@@ -49,6 +49,8 @@ function collector() {
 }
 
 describe.skipIf(!existsSync(ffmpeg))('sound processing matches FFmpeg', () => {
+  // Vitest still runs a skipped suite's body to collect its tests; the setup below needs FFmpeg.
+  if (!existsSync(ffmpeg)) return
   const dir = mkdtempSync(join(tmpdir(), 'lumacut-audio-'))
   const input = join(dir, 'in.f32')
   // Loud and quiet bursts, a different tone on each side, so dynamics have something to do.
@@ -267,6 +269,8 @@ describe.skipIf(!existsSync(ffmpeg))('sound processing matches FFmpeg', () => {
 })
 
 describe.skipIf(!existsSync(ffmpeg))('exported sound', () => {
+  // Vitest still runs a skipped suite's body to collect its tests; the setup below needs FFmpeg.
+  if (!existsSync(ffmpeg)) return
   const dir = mkdtempSync(join(tmpdir(), 'lumacut-mix-'))
   const voice = join(dir, 'voice.wav')
   const music = join(dir, 'music.wav')

@@ -31,9 +31,11 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
       - name: Tag matches package.json and CHANGELOG.md
         run: node scripts/release-notes.mjs "${GITHUB_REF_NAME}" > /dev/null
-      - run: corepack enable
+      - run: npm install -g corepack@latest && corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm lint
@@ -49,9 +51,11 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
       - name: Packaging tools
         run: sudo apt-get update && sudo apt-get install -y rpm libarchive-tools
-      - run: corepack enable
+      - run: npm install -g corepack@latest && corepack enable
       - run: pnpm install --frozen-lockfile
       # x64 and arm64 in one run; electron-builder cross-builds the arm64 packages.
       - run: pnpm dist:linux -- --publish=never
@@ -79,11 +83,13 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
       - name: Flatpak tools and the Flathub remote
         run: |
           sudo apt-get update && sudo apt-get install -y flatpak flatpak-builder
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-      - run: corepack enable
+      - run: npm install -g corepack@latest && corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm dist:flatpak -- --publish=never
         env:
@@ -105,7 +111,9 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
-      - run: corepack enable
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
+      - run: npm install -g corepack@latest && corepack enable
       - run: pnpm install --frozen-lockfile
       - name: Use the signing certificate if there is one
         shell: bash
@@ -140,7 +148,9 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
-      - run: corepack enable
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
+      - run: npm install -g corepack@latest && corepack enable
       - run: pnpm install --frozen-lockfile
       - name: Use the signing certificate and notarization if there are any
         env:
@@ -188,6 +198,8 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
+          # pnpm isn't installed yet at this point; corepack sets it up below.
+          package-manager-cache: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           path: artifacts

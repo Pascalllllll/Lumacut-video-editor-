@@ -12,6 +12,8 @@ const ffmpeg = join(bin, 'ffmpeg')
 const ffprobe = join(bin, 'ffprobe')
 
 describe.skipIf(!existsSync(ffmpeg))('export formats', () => {
+  // Vitest still runs a skipped suite's body to collect its tests; the setup below needs FFmpeg.
+  if (!existsSync(ffmpeg)) return
   const dir = mkdtempSync(join(tmpdir(), 'lumacut-formats-'))
   const source = join(dir, 'source.mp4')
   execFileSync(ffmpeg, [
