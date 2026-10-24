@@ -93,6 +93,9 @@ const isMac = process.platform === 'darwin'
 app.setName(APP_NAME)
 if (process.platform === 'win32') app.setAppUserModelId(APP_ID)
 app.commandLine.appendSwitch('ozone-platform-hint', 'auto')
+// Without a usable GPU, Chromium no longer falls back to software WebGL by itself. Lumacut's
+// window only runs its own code, so the software renderer is safe here and keeps the viewer working.
+app.commandLine.appendSwitch('enable-unsafe-swiftshader')
 if (process.env['LUMACUT_USER_DATA']) app.setPath('userData', process.env['LUMACUT_USER_DATA'])
 registerMediaScheme()
 

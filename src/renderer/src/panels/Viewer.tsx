@@ -85,6 +85,7 @@ function ProgramView() {
 
   useEffect(() => {
     if (!canvasRef.current || !hostRef.current) return
+    // Without WebGL2 this throws, and the panel shows why while the rest of the editor works.
     const player = new Player(
       canvasRef.current,
       hostRef.current,

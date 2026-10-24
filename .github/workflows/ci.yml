@@ -24,7 +24,7 @@ jobs:
           node-version: 24
           # pnpm isn't installed yet at this point; corepack sets it up below.
           package-manager-cache: false
-      - run: npm install -g corepack@latest && corepack enable
+      - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm lint
@@ -32,6 +32,7 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
@@ -41,7 +42,7 @@ jobs:
           node-version: 24
           # pnpm isn't installed yet at this point; corepack sets it up below.
           package-manager-cache: false
-      - run: npm install -g corepack@latest && corepack enable
+      - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm fetch:binaries
       - run: xvfb-run --auto-servernum pnpm test:e2e

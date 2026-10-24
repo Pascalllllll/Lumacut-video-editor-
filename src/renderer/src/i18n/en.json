@@ -72,7 +72,10 @@
     "viewer": "Viewer",
     "inspector": "Inspector",
     "timeline": "Timeline",
-    "playhead": "Playhead position"
+    "playhead": "Playhead position",
+    "failedTitle": "This panel stopped working",
+    "failed": "{reason} The rest of Lumacut still works, and your project is safe.",
+    "retry": "Try again"
   },
   "media": {
     "import": "Import media",

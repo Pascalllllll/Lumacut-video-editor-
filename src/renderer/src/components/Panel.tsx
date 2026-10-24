@@ -1,5 +1,33 @@
-import type { ReactNode } from 'react'
+import { Component, type ReactNode } from 'react'
+import { t } from '../i18n'
+import { EmptyState } from './EmptyState'
 import styles from './Panel.module.css'
+
+/** One panel failing shows its own message instead of taking the whole window down. */
+class Boundary extends Component<{ children: ReactNode }, { error: string | null }> {
+  override state = { error: null as string | null }
+
+  static getDerivedStateFromError(error: unknown) {
+    return { error: error instanceof Error ? error.message : String(error) }
+  }
+
+  override render() {
+    if (this.state.error === null) return this.props.children
+    return (
+      <div role="alert" className={styles.body}>
+        <EmptyState
+          title={t('panel.failedTitle')}
+          body={t('panel.failed', { reason: this.state.error })}
+          action={
+            <button type="button" onClick={() => this.setState({ error: null })}>
+              {t('panel.retry')}
+            </button>
+          }
+        />
+      </div>
+    )
+  }
+}
 
 function Root({ label, area, children }: { label: string; area: string; children: ReactNode }) {
   return (
@@ -9,7 +37,7 @@ function Root({ label, area, children }: { label: string; area: string; children
       aria-label={label}
       data-tour={area}
     >
-      {children}
+      <Boundary>{children}</Boundary>
     </section>
   )
 }
