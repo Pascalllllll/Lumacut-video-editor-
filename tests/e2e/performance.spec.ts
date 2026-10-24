@@ -6,6 +6,8 @@ import { test, expect } from './fixtures'
 import { addToEnd, ffmpeg, haveFfmpeg, importFiles, setWindow } from './helpers'
 
 test.skip(!haveFfmpeg, 'FFmpeg not fetched; run pnpm fetch:binaries')
+// The time budget is for real hardware; CI machines have no GPU and draw in software.
+test.skip(Boolean(process.env['CI']), 'Timing budget only applies on real hardware')
 test.setTimeout(240_000)
 
 test('a 4K timeline scrubs smoothly with proxies', async ({ app, page }) => {

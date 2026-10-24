@@ -194,19 +194,21 @@ test('plays the timeline and stops at the end', async ({ app, page }) => {
   })
   expect(state.paused).toBe(false)
   expect(state.time).toBeGreaterThan(0.8)
-  // The canvas shows the picture, not black.
-  const lit = await page.getByTestId('program-canvas').evaluate((c: HTMLCanvasElement) => {
-    const probe = document.createElement('canvas')
-    probe.width = 32
-    probe.height = 18
-    const ctx = probe.getContext('2d')!
-    ctx.drawImage(c, 0, 0, 32, 18)
-    const px = ctx.getImageData(0, 0, 32, 18).data
-    let sum = 0
-    for (let i = 0; i < px.length; i += 4) sum += px[i]! + px[i + 1]! + px[i + 2]!
-    return sum / (px.length / 4) / 3
-  })
-  expect(lit).toBeGreaterThan(20)
+  // The canvas shows the picture, not black. Slow machines decoding 4K in software
+  // can take a moment to draw the first frame.
+  const brightness = () =>
+    page.getByTestId('program-canvas').evaluate((c: HTMLCanvasElement) => {
+      const probe = document.createElement('canvas')
+      probe.width = 32
+      probe.height = 18
+      const ctx = probe.getContext('2d')!
+      ctx.drawImage(c, 0, 0, 32, 18)
+      const px = ctx.getImageData(0, 0, 32, 18).data
+      let sum = 0
+      for (let i = 0; i < px.length; i += 4) sum += px[i]! + px[i + 1]! + px[i + 2]!
+      return sum / (px.length / 4) / 3
+    })
+  await expect.poll(brightness, { timeout: 10_000 }).toBeGreaterThan(20)
   const playhead = await page.getByLabel('Playhead position').first().textContent()
   expect(playhead).not.toBe('00:00:00:00')
 
