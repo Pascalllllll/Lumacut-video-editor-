@@ -8,7 +8,7 @@ Short records of choices that shape the code. Newest at the bottom.
 **Decision.** CSS Modules per component. Every color, size, radius and duration is a CSS variable in `src/renderer/src/styles/tokens.css`; themes and accents swap variables through `data-theme` and `data-accent` on `<html>`. No Tailwind.
 **Consequences.** Theme switches cost one attribute change and no re-render. Styles live next to their component. New colors must be added as tokens, not inline.
 
-## ADR-002: GPL-3.0-or-later
+## ADR-002: GPL-3.0-or-later (replaced by ADR-067)
 
 **Context.** The app ships FFmpeg builds that include x264 and x265, which makes the distribution GPL.
 **Decision.** License Lumacut as GPL-3.0-or-later. List every bundled third-party component in `THIRD_PARTY_NOTICES.md` and ship FFmpeg's own license text next to the binaries.
@@ -403,3 +403,9 @@ Short records of choices that shape the code. Newest at the bottom.
 **Context.** The first icon was a letter on a dark square and read as a placeholder.
 **Decision.** A picture of what the app is for: a landscape frame above three clips on a timeline, crossed by the amber playhead. `resources/icons/icon.svg` is the source; the PNG sizes are rendered from it.
 **Consequences.** None.
+
+## ADR-067: PolyForm Noncommercial instead of GPL
+
+**Context.** Lumacut is original work by one author, and the author wants to keep others from selling it or rebranding it commercially. GPL-3.0 allows both. ADR-002 assumed the bundled FFmpeg forced the GPL, but FFmpeg runs as a separate program, so it doesn't decide the license of Lumacut's own code.
+**Decision.** License Lumacut under the PolyForm Noncommercial License 1.0.0, replacing ADR-002. FFmpeg and FFprobe keep shipping as unmodified GPL builds with their license text and source offer, as before. Versions up to 1.0.0 stay available under GPL-3.0-or-later.
+**Consequences.** Lumacut is source-available, not open source. Dependencies no longer need to be GPL-compatible, but anything bundled must allow redistribution, and GPL components must stay separate programs rather than being linked into the app. Contributions are accepted under the project license with permission to relicense.

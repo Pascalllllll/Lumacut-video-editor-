@@ -77,7 +77,7 @@ Lumacut sends nothing anywhere unless you choose a cloud AI provider for the cop
 
 ## License
 
-GPL-3.0-or-later. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[PolyForm Noncommercial 1.0.0](LICENSE). You can use, change and share Lumacut for any noncommercial purpose; commercial use needs permission from the author. Versions up to and including 1.0.0 were released under GPL-3.0-or-later and stay available under it. Bundled FFmpeg is GPL software; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Changelog
 

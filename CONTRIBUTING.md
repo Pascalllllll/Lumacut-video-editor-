@@ -23,4 +23,4 @@ Short and specific. Buttons say what they do ("Export", "Remove silences"). Erro
 - Add a line to the `[Unreleased]` section of `CHANGELOG.md` if people using the app will notice the change.
 - Commit messages follow Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`).
 
-By contributing you agree that your work is licensed under GPL-3.0-or-later.
+By contributing you agree that your work is licensed under the PolyForm Noncommercial License 1.0.0, and that the copyright holder may also license it under other terms.

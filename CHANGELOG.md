@@ -5,6 +5,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
+### Changed
+
+- Lumacut is now licensed under the PolyForm Noncommercial License 1.0.0 instead of GPL-3.0-or-later. Version 1.0.0 stays available under the GPL.
+
 ## [1.0.0] - 2026-10-25
 
 ### Added

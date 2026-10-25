@@ -1,6 +1,6 @@
 # Third-party notices
 
-Lumacut is licensed under GPL-3.0-or-later (see `LICENSE`). It includes or downloads the following components.
+Lumacut's own code is licensed under the PolyForm Noncommercial License 1.0.0 (see `LICENSE`). The components below keep their own licenses. FFmpeg and FFprobe run as separate programs and remain under the GPL: you may use, change and share them under its terms, whatever Lumacut's license says.
 
 ## Bundled with the app
 
